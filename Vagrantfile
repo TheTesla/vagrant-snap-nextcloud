@@ -9,6 +9,10 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.network "forwarded_port", guest: 80, host: 10080
   config.disksize.size = "900GB"
+  config.vm.provider "virtualbox" do |vb|
+    vb.cpus = "8" 
+  end 
+ 
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt update
     sudo apt install -y python
